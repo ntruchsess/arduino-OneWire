@@ -1,12 +1,12 @@
 /*
 Copyright (c) 2007, Jim Studt  (original old version - many contributors since)
 
-Version 2.2: Modifications by Norbert Truchsess, January 2013
+Version 2.3: Modifications by Norbert Truchsess, January 2013
   add search_alarms() to find only devices in alarmed state.
 
 this Version is tracked on Github: https://github.com/ntruchsess/OneWire
 
-Version 2.1 of this library was taken from:
+Version 2.1 and 2.2 of this library was taken from:
   http://www.pjrc.com/teensy/td_libs_OneWire.html
 
 OneWire has been maintained by Paul Stoffregen (paul@pjrc.com) since
