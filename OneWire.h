@@ -90,6 +90,8 @@ class OneWire
     uint8_t LastDiscrepancy;
     uint8_t LastFamilyDiscrepancy;
     uint8_t LastDeviceFlag;
+
+    uint8_t search_internal(uint8_t *newAddr, uint8_t command);
 #endif
 
   public:
@@ -144,6 +146,9 @@ class OneWire
     // get garbage.  The order is deterministic. You will always get
     // the same devices in the same order.
     uint8_t search(uint8_t *newAddr);
+
+    // Like search, but finds devices in alarmed state only.
+    uint8_t search_alarms(uint8_t *newAddr);
 #endif
 
 #if ONEWIRE_CRC

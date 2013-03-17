@@ -1,7 +1,12 @@
 /*
 Copyright (c) 2007, Jim Studt  (original old version - many contributors since)
 
-The latest version of this library may be found at:
+Version 2.2: Modifications by Norbert Truchsess, January 2013
+  add search_alarms() to find only devices in alarmed state.
+
+this Version is tracked on Github: https://github.com/ntruchsess/OneWire
+
+Version 2.1 of this library was taken from:
   http://www.pjrc.com/teensy/td_libs_OneWire.html
 
 Version 2.1:
@@ -308,7 +313,22 @@ void OneWire::reset_search()
 // Return TRUE  : device found, ROM number in ROM_NO buffer
 //        FALSE : device not found, end of search
 //
+
 uint8_t OneWire::search(uint8_t *newAddr)
+{
+	return search_internal(newAddr,0xF0);
+}
+
+//
+// Like search. Return devices that are in alarm state only.
+//
+
+uint8_t OneWire::search_alarms(uint8_t *newAddr)
+{
+	return search_internal(newAddr,0xEC);
+}
+
+uint8_t OneWire::search_internal(uint8_t *newAddr, uint8_t command)
 {
    uint8_t id_bit_number;
    uint8_t last_zero, rom_byte_number, search_result;
@@ -337,7 +357,7 @@ uint8_t OneWire::search(uint8_t *newAddr)
       }
 
       // issue the search command
-      write(0xF0);
+      write(command);
 
       // loop to do the search
       do
