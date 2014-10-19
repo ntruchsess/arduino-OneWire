@@ -1,6 +1,11 @@
 /*
 Copyright (c) 2007, Jim Studt  (original old version - many contributors since)
 
+Modifications by Prashant : An extra no arguments constructor to simplify 
+multiple OneWire buse use, allowing for easier construction of arrays of OneWire buses,
+in the limited environment provided by Arduino.
+See the Multibus_simple example illustrating a use-case of the extension.
+
 Version 2.3: Modifications by Norbert Truchsess, January 2013
   add search_alarms() to find only devices in alarmed state.
 
@@ -122,7 +127,8 @@ sample code bearing this copyright.
 #include "OneWire.h"
 
 
-OneWire::OneWire(uint8_t pin)
+OneWire::OneWire() {}
+void OneWire::setPin(uint8_t pin)
 {
 	pinMode(pin, INPUT);
 	bitmask = PIN_TO_BITMASK(pin);
@@ -130,6 +136,11 @@ OneWire::OneWire(uint8_t pin)
 #if ONEWIRE_SEARCH
 	reset_search();
 #endif
+}
+
+OneWire::OneWire(uint8_t pin)
+{
+	setPin(pin);
 }
 
 
