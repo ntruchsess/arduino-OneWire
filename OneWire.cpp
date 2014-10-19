@@ -5,6 +5,7 @@ Modifications by Prashant : An extra no arguments constructor to simplify
 multiple OneWire buse use, allowing for easier construction of arrays of OneWire buses,
 in the limited environment provided by Arduino.
 See the Multibus_simple example illustrating a use-case of the extension.
+Use in conjunction with my modification of the DallasTemperature library.
 
 Version 2.3: Modifications by Norbert Truchsess, January 2013
   add search_alarms() to find only devices in alarmed state.
