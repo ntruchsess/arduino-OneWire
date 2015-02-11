@@ -126,6 +126,8 @@ class OneWire
 #endif
 
   public:
+    OneWire();
+    void setPin(uint8_t pin);
     OneWire( uint8_t pin);
 
     // Perform a 1-Wire reset cycle. Returns 1 if a device responds
